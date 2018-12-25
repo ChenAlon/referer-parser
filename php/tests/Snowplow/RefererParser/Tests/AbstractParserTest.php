@@ -4,6 +4,7 @@ namespace Snowplow\RefererParser\Tests;
 use PHPUnit_Framework_TestCase as TestCase;
 use Snowplow\RefererParser\Medium;
 use Snowplow\RefererParser\Parser;
+use Snowplow\RefererParser\Source;
 
 abstract class AbstractParserTest extends TestCase
 {
@@ -65,8 +66,16 @@ abstract class AbstractParserTest extends TestCase
     public function testCustomInternalHosts()
     {
         $parser = $this->createParser(['google.com']);
-
-        $this->assertSame(Medium::INTERNAL, $parser->parse('http://google.com')->getMedium());
+        
+        $this->assertSame(Source::INTERNAL, $parser->parse('http://google.com')->getSource());
         $this->assertSame(Medium::SEARCH, $this->parser->parse('http://google.com')->getMedium());
     }
+	
+	public function testKnownByHosts()
+	{
+		$parser = $this->createParser();
+		
+		$this->assertSame('somedomain.com', $parser->parse('http://somedomain.com')->getSource());
+		$this->assertNull($parser->parse('http://somedomain.com')->getMedium());
+	}
 }

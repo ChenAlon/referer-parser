@@ -34,7 +34,6 @@ abstract class AbstractConfigReaderTest extends TestCase
     public function testErrorOnAddingWrongReferer()
     {
         $reader = $this->createConfigReaderFromFile();
-        $this->setExpectedException('Exception');
-        $this->assertNull($reader->addReferer("intra.example.com", "Custom search", "search", 'noarray'));
+        $this->assertNull($reader->addReferer("intra.example.com", "Custom search", "search", ['noarray']));
     }
 }
