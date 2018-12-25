@@ -1,6 +1,6 @@
 {
-    "name": "snowplow/referer-parser",
-    "description": "Snowplow Refer(r)er parser for PHP",
+    "name": "chenalon/referer-parser",
+    "description": "Fork of Snowplow Refer(r)er parser for PHP",
     "require-dev": {
         "phpunit/phpunit": "3.*",
         "symfony/yaml": "*"
@@ -13,6 +13,10 @@
         {
             "name": "Lars Strojny",
             "email": "lars@strojny.net"
+        },
+        {
+            "name": "Chen Alon",
+            "email": "chen@bwebi.co.il"
         }
     ],
     "autoload": {
