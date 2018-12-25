@@ -24,7 +24,15 @@ class Referer
 
         return $referer;
     }
-
+	
+	public static function createKnownByHost($refererParts)
+	{
+		$referer = new self();
+		$referer->source = $refererParts['host'] ?: Source::UNKNOWN;
+		
+		return $referer;
+	}
+    
     public static function createUnknown()
     {
         $referer = new self();

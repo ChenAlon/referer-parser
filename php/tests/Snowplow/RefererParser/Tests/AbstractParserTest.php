@@ -69,4 +69,12 @@ abstract class AbstractParserTest extends TestCase
         $this->assertSame(Medium::INTERNAL, $parser->parse('http://google.com')->getMedium());
         $this->assertSame(Medium::SEARCH, $this->parser->parse('http://google.com')->getMedium());
     }
+	
+	public function testKnownByHosts()
+	{
+		$parser = $this->createParser();
+		
+		$this->assertSame('somedomain.com', $parser->parse('http://somedomain.com')->getSource());
+		$this->assertNull($parser->parse('http://somedomain.com')->getMedium());
+	}
 }

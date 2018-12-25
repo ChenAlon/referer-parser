@@ -45,7 +45,7 @@ class Parser
         $referer = $this->lookup($refererParts['host'], $refererParts['path']);
 
         if (!$referer) {
-            return Referer::createUnknown();
+            return Referer::createKnownByHost($refererParts);
         }
 
         $searchTerm = null;
