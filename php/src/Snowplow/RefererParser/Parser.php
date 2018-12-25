@@ -56,7 +56,7 @@ class Parser
             }
         }
 
-        return Referer::createKnown($referer['medium'], $referer['source'], $searchTerm);
+        return Referer::createKnown($referer['source'], $referer['medium'], $searchTerm);
     }
 
     protected static function parseUrl($url)

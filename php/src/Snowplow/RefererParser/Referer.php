@@ -15,11 +15,11 @@ class Referer
     protected function __construct()
     {}
 
-    public static function createKnown($medium, $source, $searchTerm = null)
+    public static function createKnown($source, $medium, $searchTerm = null)
     {
         $referer = new self();
-        $referer->medium = $medium;
         $referer->source = $source;
+        $referer->medium = $medium;
         $referer->searchTerm = $searchTerm;
 
         return $referer;
@@ -36,7 +36,7 @@ class Referer
     public static function createUnknown()
     {
         $referer = new self();
-        $referer->medium = Medium::UNKNOWN;
+		$referer->source = Source::UNKNOWN;
 
         return $referer;
     }
@@ -44,7 +44,7 @@ class Referer
     public static function createInternal()
     {
         $referer = new self();
-        $referer->medium = Medium::INTERNAL;
+        $referer->source = Source::INTERNAL;
 
         return $referer;
     }
@@ -52,7 +52,7 @@ class Referer
     public static function createInvalid()
     {
         $referer = new self();
-        $referer->medium = Medium::INVALID;
+        $referer->source = Source::INVALID;
 
         return $referer;
     }
@@ -60,15 +60,15 @@ class Referer
     /** @return boolean */
     public function isValid()
     {
-        return $this->medium !== Medium::INVALID;
+        return $this->source !== Source::INVALID;
     }
 
     /** @return boolean */
     public function isKnown()
     {
-        return !in_array($this->medium, [Medium::UNKNOWN, Medium::INTERNAL, Medium::INVALID], true);
+        return !in_array($this->source, [Source::UNKNOWN, Source::INTERNAL, Source::INVALID], true);
     }
-
+    
     /** @return string */
     public function getMedium()
     {
