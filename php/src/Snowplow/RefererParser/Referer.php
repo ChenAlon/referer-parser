@@ -60,7 +60,7 @@ class Referer
     /** @return boolean */
     public function isValid()
     {
-        return $this->source !== Source::INVALID;
+        return $this->source !== Source::INVALID && $this->source !== null;
     }
 
     /** @return boolean */
